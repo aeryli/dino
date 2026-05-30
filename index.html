@@ -1,24 +1,25 @@
-<h4>[WIP] dino, offline</h4>
-1. download assets.zip and add it to drive. <br>
-2. double-click the zip file or right click >> open (from drive, in files.) <br>
-3. close files (It still stays open) <br>
-4. click copy bookmark <br>
-5. paste the text into your bookmarks <br>
-
-<a href="assets.zip">assets.zip</a>
+<div>
+  <h4>[WIP] dino, offline</h4>
+  1. download assets.zip and add it to drive. <br>
+  2. open <a href="dino.zip">dino.zip</a> and <a href="file://media/archive/dino.zip/">assets.zip</a> (in dino.zip)<br>
+  3. close file explorer (It still stays open) <br>
+  4. click copy bookmark <br>
+  5. paste the text into your bookmarks <br>
+</div>
+<button><a href="dino.zip">dino.zip</a></button>
 <button id="getCopy">Copy bookmark</button>
 
 <script>
+  async function delayy(ms) {
+    await delay(ms);
+  }
+  text = "file:///media/archive/dino.zip/game.html"
   document.getElementById('getCopy').addEventListener('click', async () => {
-    const fileUrl = 'https://aeryli.github.io/dino/bookmark.txt';
-
     try {
-      const response = await fetch(fileUrl);
-      if (!response.ok) throw new Error('no bookmark.txt');
-      const text = await response.text();
       await navigator.clipboard.writeText(text);
-      alert('copied bookmark');
-      
+      document.getElementById('getCopy').innerText = 'Copied Bookmark'
+      delayy(250);
+      document.getElementById('getCopy').innerText = 'Copy Bookmark'
     } catch (err) { console.error('error', err); }
   });
 </script>
